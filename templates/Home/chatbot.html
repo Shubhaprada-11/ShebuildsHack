@@ -1,0 +1,27 @@
+{% extends 'Base.html' %}
+{% load google_translate %}
+{% load crispy_forms_tags %}
+{% block title %} Contact Us {% endblock title %}
+{% block body_block %}
+
+<h1>Chatbot</h1>
+<br>
+<br>
+<br>
+<br>
+{% google_translate %} 
+<form action="/home/generate_completion" method="post">
+    {% csrf_token %}
+    <label>Enter your message:</label>
+    <input type="text" name="user_input" />
+    <button type="submit">Send</button>
+    </form>
+
+<h1>{{ test }}</h1>
+
+{% if res %}
+<h2>Chatbot response:</h2>
+<h3>{{ res }}</h3>
+{% endif %}
+
+{% endblock %}
