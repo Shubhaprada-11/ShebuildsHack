@@ -134,7 +134,7 @@ def moodtracker(request,desc):
     
 
 def generate_completion(request):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     prompt = request.POST.get("user_input")
     print(prompt)
