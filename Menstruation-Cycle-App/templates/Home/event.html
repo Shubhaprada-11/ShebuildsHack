@@ -1,0 +1,100 @@
+{% extends 'Base.html' %}
+{% load google_translate %}
+{% load crispy_forms_tags %}
+{% block title %} Contact Us {% endblock title %}
+{% block body_block %}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="container">
+    <div class="clearfix">
+        <br>
+        <br>
+        {% google_translate %}
+        <a class="w3-button w3-pale-red" href="{'% url 'Home:calendar' %}"> Calendar </a>
+      </div>
+</div>
+
+  
+  {% if form.errors %}
+  {% for field in form %}
+      {% for error in field.errors %}
+          <div class="alert alert-danger">
+              {{ field.label }} <strong>{{ error|escape }}</strong>
+          </div>
+      {% endfor %}
+  {% endfor %}
+  {% for error in form.non_field_errors %}
+      <div class="alert alert-danger">
+          {{ field.label }} <strong>{{ error|escape }}</strong>
+      </div>
+  {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+  <br>
+  <button> Submit </button>
+  </form>
+
+
+
+
+  <style>
+    body{
+  background: #bd047c;
+}
+
+form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: rgba(0,0,0,.1);
+  padding: 100px;
+}
+
+label{
+ font-family: sans-serif;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-size: .8em;
+  color: #FFF;
+}
+
+input[type=text]{
+  display: inline-block;
+  border: none;
+  text-align: left;
+  box-shadow: 3px 2px rgba(239, 77, 172, 0.699);
+  padding: 10px;
+  width: 350px;
+  margin: 10px 0;
+  background: transparent;
+  color: #FFF;
+}
+
+input[type=text]:focus{
+  background: none;
+  border: none;
+  color: #FFF;
+}
+
+button{
+  background: transparent;
+  color: #FFF;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 20px 0;
+  padding: 10px 30px;
+  border: 2px solid #FFF;
+}
+
+button:hover{
+  background: transparent;
+  border: 2px solid rgba(248, 146, 208, 0.4);
+}
+  </style>
+  {% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'Base.html' %}
+{% load google_translate %}
+{% load crispy_forms_tags %}
+{% block title %} Contact Us {% endblock title %}
+{% block body_block %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+    .title {
+        background-color: #ff748ac4;
+        color: #021119;
+        text-align: center;
+        padding: 100px;
+        -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+        
+        
+    }
+    
+    .letsSpeak {
+        background-color: #021119;
+        color: white;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    
+    .knowledge {
+        background-color: #ff718773;
+        color: white;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    
+    .teach {
+        background-color: #16a8c7;
+        color: white;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    
+    a {
+        color: black;
+        
+    }
+    button {
+        background-color: #c2454c;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <div class="title" id="title">
+        {% google_translate %}
+        <h2>Hi, I'm a chat bot.<br/> Say hi below</h2>
+        <a id="icon" href="#letsSpeak"><i class="fa fa-angle-double-down" style="font-size:48px"></i></a>
+        </div>
+
+<div class="knowledge">
+    <h2>Chat with me!</h2>
+    <form action="/home/generate_completion" method="post">
+    {% csrf_token %}
+    <input type="text" class="form-control" placeholder="Enter your question " id="userInput" name="user_input">
+    <br/>
+    <button type="submit" class="w3-button w3-pink" value="Reset Form">Chat</button>
+    <br/>
+    </form>
+    
+    {% if prompt %}
+    {% if res %}
+    <div class="response">{{ res }}</div>
+    {% endif %}
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

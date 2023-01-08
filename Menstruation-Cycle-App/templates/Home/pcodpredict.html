@@ -1,0 +1,24 @@
+{% extends 'Base.html' %}
+{% load google_translate %}
+{% load crispy_forms_tags %}
+{% block title %} Contact Us {% endblock title %}
+{% block body_block %}
+
+<div class="contactmains">
+	<div class="contact">
+		{% google_translate %}
+		<h1>PCOD Predictor</h1>
+		
+			<form method="post">
+				{{ form | crispy }} 
+				{% csrf_token %}
+				
+				<button type="submit"  class="custom-btn btn-2">Predict</button>
+                <h1>{{ res }}</h1>
+			</form>
+		
+	</div>
+
+</div>
+
+{% endblock %}

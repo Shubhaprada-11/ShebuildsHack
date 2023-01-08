@@ -1,0 +1,224 @@
+{% extends 'Base.html' %}
+{% load google_translate %}
+{% load crispy_forms_tags %}
+{% block title %} Contact Us {% endblock title %}
+{% block body_block %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.js" integrity="sha512-Lii3WMtgA0C0qmmkdCpsG0Gjr6M0ajRyQRQSbTF6BsrVh/nhZdHpVZ76iMIPvQwz1eoXC3DmAg9K51qT5/dEVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+{% if scoregraph %}
+<div class="row">
+  <div class="col-lg-6 col-sm-6" style="margin:0 auto;"> 
+    {% google_translate %} 
+    <centre><canvas id="myChart2" width="5" height="5" ></canvas></centre> 
+</div>
+<div class="col-lg-6 col-sm-6" style="margin:0 auto;">  
+  {{ calendar }}
+</div>
+</div>
+{% endif %}
+
+<div class="clearfix">
+  <br>
+<a class="btn btn-info left" href="{% url 'Home:calendar' %}?{{ prev_month }}"> Previous Month </a>
+<a class="btn btn-info right" href="{% url 'Home:calendar' %}?{{ next_month }}"> Next Month </a>
+<a class="btn btn-info right" href="{% url 'Home:event_new' %}"> New Event </a>
+</div>
+
+<!-- {{ calendar }} -->
+
+<script>
+    const plugin = {
+    id: 'custom_canvas_background_color',
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext('2d');
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.fillStyle = 'lightPink';
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    }};
+    let canvaselement=document.getElementById("myChart2").getContext('2d');
+    let l1 = {{dategraph|safe}};
+    let d1 = {{ scoregraph }};
+    console.log(typeof(d1))
+    console.log("Hello")
+    console.log(d1)
+    let x = [];
+    let y = [];
+    for (let i in l1) {
+  x.push(l1[i]);
+}
+    console.log(x)
+    console.log(typeof(x))
+    let l = ['20221001','20221103','20221204','20221205','20230101'];
+    console.log(typeof(l))
+    console.log(l)
+    let d = [-1,1,0,2,-2];
+    console.log(typeof(d))
+        var config ={
+            type: "bar",
+            data: {
+                labels : x,
+                datasets: [{ data: d1,
+                backgroundColor: [
+                        'rgba(0, 0, 0, 0.9)',
+                        'rgba(255, 206, 86, 0.9)',
+                        'rgba(173,255,47, 0.9)',
+                        'rgba(255,0,0, 0.9)',
+                        'rgba(0,0,255, 0.9)',
+                        'rgba(128,0,0, 0.9)',
+                        'rgba(128,0,128, 0.9)',
+                        'rgba(0,128,128, 0.9)',
+                        'rgba(255,165,0, 0.9)',
+                    ],
+            }]
+            },
+            plugins: [plugin],
+            options: {
+              scales:{
+                x:{
+                    type:'time',
+                    time: {
+                      unit: 'day'
+                    }
+                },
+                },
+                plugins: {
+                  legend: {
+            display: false
+         },
+         tooltips: {
+            enabled: false
+         },
+                    title: {
+                        display: true,
+                        text: "Graph"
+                    },
+        
+                },
+               
+            }
+          };
+          var myChart2=new Chart(canvaselement,config);
+    
+  </script>
+
+<style>
+    .calendar, .body {
+  width: 70%;
+  margin: auto;
+  font-size: 13px;
+  background: #ff748ac4;
+         color: #fff;
+         font-family: 'Lato', Arial, sans-serif;
+}
+
+.calendar tr, .calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  text-align: center;
+  font-size: 18px;
+  border: 2px solid #fff;
+  border-collapse: collapse;
+  padding: 15px;
+}
+
+.calendar td {
+  width: 300px;
+  height: 75px;
+  padding: 20px 0px 0px 5px;
+  border: 2px solid #fff;
+  border-collapse: collapse;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: #17a2b8;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+}
+
+.clearfix {
+  margin: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+     h1 {
+         font-family: "proxima-nova",sans-serif;
+         letter-spacing: -0.01em;
+         font-weight: 700;
+         font-style: normal;
+         font-size: 60px;
+         margin-left: -3px;
+         line-height: 1em;
+         color: #fff;
+         text-align: center;
+         margin-bottom: 8px;
+         text-rendering: optimizeLegibility;
+     }
+
+    .calendar table {
+         width: 80%;
+         margin: auto;
+         border: 1px solid #fff;
+         border-collapse: collapse;
+     }
+
+</style>
+
+{% endblock %}
