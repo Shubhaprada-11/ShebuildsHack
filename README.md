@@ -14,9 +14,9 @@ Period tracking apps have become an increasingly convenient way for women to kee
 Vedio Demo:
 https://youtu.be/rlUYQeAB9Fk
 
-Backend:Python Django
-Frontend: HTML CSS JavaScript
+Backend:Python Django <br />
+Frontend: HTML CSS JavaScript <br />
 
 To run:
-pip install -r requirements.txt
+pip install -r requirements.txt <br />
 python manage.py runserver <localhost_portnumber>
