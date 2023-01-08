@@ -1,8 +1,19 @@
 # ShebuildsHack
 
-Welcome to Catemania!
-Know your cycle, know yourself!
+##Welcome to Catemania! <br />
+
+Know your cycle, know yourself! <br />
+
 Period tracking apps have become an increasingly convenient way for women to keep track of their menstrual cycles and related health information. Our project "Catemenia" involves the design and development of a period tracking web application using Python Django backend that allows users to log various details about their periods, such as the start date, durate, mental health .In addition to tracking periods, our period tracking app also offers features such as timeline of menstrual cycle, blogs that promote self care and women empowerment, AI chatbot that answers all queries related to periods, PCOD prediction, mood analysis based on calendar logs. These features can help a woman better understand her overall health.
+
+
+Backend: Python, Django <br />
+Frontend: HTML, CSS, JavaScript <br />
+
+To run:
+pip install -r requirements.txt <br />
+python manage.py runserver <localhost_portnumber>
+
 
 <img width="947" alt="Capture1" src="https://user-images.githubusercontent.com/95869528/211192845-dc17ab77-1c84-4aa7-baeb-b10e87695509.PNG">
 <img width="942" alt="Capture3" src="https://user-images.githubusercontent.com/95869528/211192802-3088e67d-be9b-42b3-86d9-8fb4796cb5bf.PNG">
@@ -14,9 +25,4 @@ Period tracking apps have become an increasingly convenient way for women to kee
 Vedio Demo:
 https://youtu.be/rlUYQeAB9Fk
 
-Backend:Python Django <br />
-Frontend: HTML CSS JavaScript <br />
 
-To run:
-pip install -r requirements.txt <br />
-python manage.py runserver <localhost_portnumber>
