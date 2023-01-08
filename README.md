@@ -10,7 +10,7 @@ Period tracking apps have become an increasingly convenient way for women to kee
 Backend: Python, Django <br />
 Frontend: HTML, CSS, JavaScript <br />
 
-To run:
+### To run: <br />
 pip install -r requirements.txt <br />
 python manage.py runserver <localhost_portnumber>
 
@@ -22,7 +22,7 @@ python manage.py runserver <localhost_portnumber>
 <img width="940" alt="Capture5" src="https://user-images.githubusercontent.com/95869528/211192831-c64cac0a-eac4-42b0-ab8b-890eba1365c4.PNG">
 <img width="936" alt="Capture6" src="https://user-images.githubusercontent.com/95869528/211192839-1f412473-3f8b-467a-b71f-ede8875fbb7b.PNG">
 
-Vedio Demo:
+### Vedio Demo:
 https://youtu.be/rlUYQeAB9Fk
 
 
